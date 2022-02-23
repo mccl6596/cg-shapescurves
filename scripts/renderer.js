@@ -46,7 +46,7 @@ class Renderer {
 
     // ctx:          canvas context
     drawSlide0(ctx) {
-        
+        //this.drawRectangle(ctx.x, ctx.y, , ctx)
     }
 
     // ctx:          canvas context
@@ -69,7 +69,13 @@ class Renderer {
     // color:        array of int [R, G, B, A]
     // ctx:          canvas context
     drawRectangle(left_bottom, right_top, color, ctx) {
-        this.drawLine(left_bottom, {} , color, ctx);
+        let left_top = {x:left_bottom.x, y: right_top.y};
+        let right_bottom = {x: right_top.x, y: left_bottom.y};
+        this.drawLine(left_bottom, left_top , color, ctx);
+        this.drawLine(left_top, right_top, color, ctx);
+        this.drawLine(right_bottom, right_top, color, ctx);
+        this.drawLine(left_bottom, right_bottom);
+
         
     }
 

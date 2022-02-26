@@ -1,3 +1,5 @@
+
+
 class Renderer {
     // canvas:              object ({id: __, width: __, height: __})
     // num_curve_sections:  int
@@ -46,6 +48,7 @@ class Renderer {
 
     // ctx:          canvas context
     drawSlide0(ctx) {
+
         //this.drawRectangle(ctx.x, ctx.y, , ctx)
     }
 
@@ -79,6 +82,7 @@ class Renderer {
         
     }
 
+    //radians, not degrees
     // center:       object ({x: __, y: __})
     // radius:       int
     // color:        array of int [R, G, B, A]

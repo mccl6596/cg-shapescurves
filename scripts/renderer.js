@@ -105,7 +105,7 @@ class Renderer {
     drawCircle(center, radius, color, ctx) {
         let degrees = (360/this.num_curve_sections);
         let newAngle = degrees/2;
-        let starting = {x: (center.x + (radius * Math.cos(degrees* Math.PI / 180))),y: (center.y + (radius * Math.sin(degrees* Math.PI / 180)))};
+        let starting = {x: (center.x + (radius * Math.cos(newAngle * Math.PI / 180))),y: (center.y + (radius * Math.sin(newAngle* Math.PI / 180)))};
         let a = starting;
         let placeHolder;
         for(let i = 0; i < this.num_curve_sections; i++) {

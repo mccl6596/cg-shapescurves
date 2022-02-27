@@ -46,14 +46,29 @@ class Renderer {
         }
     }
 
+    randomy() {
+        return Math.floor(Math.random() * this.canvas.height);
+    }
+    randomx() {
+        return Math.floor(Math.random() * this.canvas.width);
+    }
+
     // ctx:          canvas context
     drawSlide0(ctx) {
-
-        //this.drawRectangle(ctx.x, ctx.y, , ctx)
+        let y1 = this.randomy();
+        let x1 = this.randomx();
+        let y2 = this.randomy();
+        let x2 = this.randomx();
+        let left_bottom = {x: x1, y: y1};
+        let right_top = {x: x2, y: y2};
+        this.drawRectangle(left_bottom, right_top, [255, 255, 0], ctx);
     }
 
     // ctx:          canvas context
     drawSlide1(ctx) {
+        let a = {x: (this.canvas.width/2), y: (this.canvas.height/2)};
+        let b = 100;
+        this.drawCircle(a, b, [255, 255, 0], ctx);
 
     }
 
@@ -77,7 +92,7 @@ class Renderer {
         this.drawLine(left_bottom, left_top , color, ctx);
         this.drawLine(left_top, right_top, color, ctx);
         this.drawLine(right_bottom, right_top, color, ctx);
-        this.drawLine(left_bottom, right_bottom);
+        this.drawLine(left_bottom, right_bottom, color, ctx);
 
         
     }
@@ -88,6 +103,22 @@ class Renderer {
     // color:        array of int [R, G, B, A]
     // ctx:          canvas context
     drawCircle(center, radius, color, ctx) {
+        let degrees = (360/this.num_curve_sections);
+        let newAngle = degrees/2;
+        let starting = {x: (center.x + (radius * Math.cos(degrees* Math.PI / 180))),y: (center.y + (radius * Math.sin(degrees* Math.PI / 180)))};
+        let a = starting;
+        let placeHolder;
+        for(let i = 0; i < this.num_curve_sections; i++) {
+            newAngle = newAngle + degrees
+            if (degrees > 360) {
+                this.drawLine(starting, a, color, ctx);
+                break
+            }
+            placeHolder =  {x: (center.x + (radius * Math.cos(newAngle * Math.PI / 180))),y: (center.y + (radius * Math.sin(newAngle* Math.PI / 180)))};
+            this.drawLine(a, placeHolder, color, ctx);
+            a = placeHolder;
+        }
+
         
     }
 

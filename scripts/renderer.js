@@ -83,6 +83,32 @@ class Renderer {
 
     // ctx:          canvas context
     drawSlide3(ctx) {
+        let color = [0,0,0,255];
+        //m
+        let m3 = {x:50, y:280};
+        let m4 = {x:50, y:300};
+        let m5 = {x:90, y:280};
+        let m6 = {x:90, y:300};
+        let mp1 = {x:10, y:300};
+        let mp2 = {x:10, y:400};
+        let mp3 = {x:50, y:400};
+        let mp4 = {x:50, y:300};
+        let mp5 = {x:50, y:300};
+        let mp6 = {x:50, y:400};
+        let mp7 = {x:90, y:400};
+        let mp8 = {x:90, y:300};
+        this.drawLine({x:10, y:280}, {x:10, y:380}, color, ctx);
+        this.drawLine(m3, m4, color, ctx);
+        this.drawLine(m5, m6, color, ctx);
+        this.drawBezierCurve(mp1, mp2, mp3, mp4, color, ctx);
+        this.drawBezierCurve(mp5, mp6, mp7, mp8, color, ctx);
+        //a
+        this.drawLine({x: 190, y: 280}, {x: 190, y: 370}, color, ctx);
+        this.drawCircle({x:145, y: 325}, 45, color, ctx);
+        //c
+        this.drawLine({x: 210, y: 280}, {x: 210, y: 340}, color, ctx);
+        this.drawBezierCurve({x: 210, y: 340}, {x: 210, y: 385}, {x: 270, y: 385}, {x: 270, y: 340}, color, ctx);
+        this.drawBezierCurve({x: 210, y: 275}, {x: 210, y: 230}, {x: 270, y: 230}, {x: 270, y: 275}, color, ctx);
 
     }
 

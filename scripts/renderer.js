@@ -61,14 +61,14 @@ class Renderer {
         let x2 = this.randomx();
         let left_bottom = {x: x1, y: y1};
         let right_top = {x: x2, y: y2};
-        this.drawRectangle(left_bottom, right_top, [255, 255, 0], ctx);
+        this.drawRectangle(left_bottom, right_top, [153,153,255,255], ctx);
     }
 
     // ctx:          canvas context
     drawSlide1(ctx) {
         let a = {x: (this.canvas.width/2), y: (this.canvas.height/2)};
         let b = 100;
-        this.drawCircle(a, b, [255, 255, 0], ctx);
+        this.drawCircle(a, b, [255, 153, 51, 255], ctx);
 
     }
 
@@ -78,7 +78,7 @@ class Renderer {
         let a1 = {x: 100, y:300};
         let b = {x: 300, y:100};
         let b1 = {x: 300, y:300};
-        this.drawBezierCurve(a, a1, b1, b, [255, 255, 0], ctx);
+        this.drawBezierCurve(a, a1, b1, b, [0, 163, 76, 255], ctx);
     }
 
     // ctx:          canvas context
@@ -98,10 +98,10 @@ class Renderer {
         this.drawLine(right_bottom, right_top, color, ctx);
         this.drawLine(left_bottom, right_bottom, color, ctx);
         if (this.show_points == 1) {
-            this.drawPoint(left_top, color, ctx);
-            this.drawPoint(left_bottom, color, ctx);
-            this.drawPoint(right_top, color, ctx);
-            this.drawPoint(right_bottom, color, ctx);
+            this.drawPoint(left_top, ctx);
+            this.drawPoint(left_bottom, ctx);
+            this.drawPoint(right_top, ctx);
+            this.drawPoint(right_bottom, ctx);
         }
 
         
@@ -122,12 +122,12 @@ class Renderer {
             newAngle = newAngle + degrees
             if (degrees > 360) {
                 this.drawLine(starting, a, color, ctx);
-                this.drawPoint(starting, color, ctx);
+                this.drawPoint(starting, ctx);
                 break
             }
             placeHolder =  {x: (center.x + (radius * Math.cos(newAngle * Math.PI / 180))),y: (center.y + (radius * Math.sin(newAngle* Math.PI / 180)))};
             if (this.show_points == 1) {
-                this.drawPoint(placeHolder, color, ctx);
+                this.drawPoint(placeHolder, ctx);
             }
             this.drawLine(a, placeHolder, color, ctx);
             a = placeHolder;
@@ -147,29 +147,29 @@ class Renderer {
         let t = counter;
         let starting = {x: pt0.x, y: pt0.y};
         if (this.show_points == 1) {
-            this.drawPoint(starting, color, ctx);
+            this.drawPoint(starting, ctx);
         }
         let placeHolder;
         for(let i = 0; i < this.num_curve_sections; i++) {
             placeHolder = {x:(Math.pow((1-t), 3)*pt0.x)+(3*Math.pow((1-t), 2)*t*pt1.x)+(3*(1-t)*Math.pow(t, 2)*pt2.x)+(Math.pow(t, 3)*pt3.x), y: (Math.pow((1-t), 3)*pt0.y)+(3*Math.pow((1-t), 2)*t*pt1.y)+(3*(1-t)*Math.pow(t, 2)*pt2.y)+(Math.pow(t, 3)*pt3.y)};
             this.drawLine(starting, placeHolder, color, ctx);
             if (this.show_points == 1) {
-                this.drawPoint(placeHolder, color, ctx);
+                this.drawPoint(placeHolder, ctx);
             }
             t = t + counter;
             starting = placeHolder;
         }
     }
 
-    drawPoint(point, color, ctx) {
+    drawPoint(point, ctx) {
         let a = {x:point.x-2, y: point.y-2};
         let b = {x: point.x-2, y: point.y+2};
         let c = {x:point.x+2, y: point.y+2};
         let d = {x: point.x+2, y: point.y-2};
-        this.drawLine(a, b, color, ctx);
-        this.drawLine(b, c, color, ctx);
-        this.drawLine(c, d, color, ctx);
-        this.drawLine(d, a, color, ctx);
+        this.drawLine(a, b, [0, 0, 0, 255], ctx);
+        this.drawLine(b, c, [0, 0, 0, 255], ctx);
+        this.drawLine(c, d, [0, 0, 0, 255], ctx);
+        this.drawLine(d, a, [0, 0, 0, 255], ctx);
     }
 
     // pt0:          object ({x: __, y: __})

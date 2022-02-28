@@ -106,9 +106,9 @@ class Renderer {
         this.drawLine({x: 190, y: 280}, {x: 190, y: 370}, color, ctx);
         this.drawCircle({x:145, y: 325}, 45, color, ctx);
         //c
-        this.drawLine({x: 210, y: 280}, {x: 210, y: 340}, color, ctx);
+        this.drawLine({x: 210, y: 310}, {x: 210, y: 340}, color, ctx);
         this.drawBezierCurve({x: 210, y: 340}, {x: 210, y: 385}, {x: 270, y: 385}, {x: 270, y: 340}, color, ctx);
-        this.drawBezierCurve({x: 210, y: 275}, {x: 210, y: 230}, {x: 270, y: 230}, {x: 270, y: 275}, color, ctx);
+        this.drawBezierCurve({x: 210, y: 310}, {x: 210, y: 265}, {x: 270, y: 265}, {x: 270, y: 310}, color, ctx);
 
     }
 

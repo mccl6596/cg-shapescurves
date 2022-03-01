@@ -109,6 +109,19 @@ class Renderer {
         this.drawLine({x: 210, y: 310}, {x: 210, y: 340}, color, ctx);
         this.drawBezierCurve({x: 210, y: 340}, {x: 210, y: 385}, {x: 270, y: 385}, {x: 270, y: 340}, color, ctx);
         this.drawBezierCurve({x: 210, y: 310}, {x: 210, y: 265}, {x: 270, y: 265}, {x: 270, y: 310}, color, ctx);
+        //k
+        this.drawLine({x: 290, y: 280}, {x: 290, y: 390}, color, ctx);
+        this.drawLine({x: 290, y: 340}, {x: 330, y: 380}, color, ctx);
+        this.drawLine({x: 305, y: 355}, {x: 330, y: 280}, color, ctx);
+        //e
+        this.drawLine({x: 350, y: 310}, {x: 350, y: 340}, color, ctx);
+        this.drawBezierCurve({x: 350, y: 340}, {x: 350, y: 385}, {x: 410, y: 385}, {x: 410, y: 340}, color, ctx);
+        this.drawBezierCurve({x: 350, y: 310}, {x: 350, y: 265}, {x: 410, y: 265}, {x: 410, y: 310}, color, ctx);
+        this.drawLine({x: 350, y: 340}, {x: 410, y: 340}, color, ctx);
+        //n
+        this.drawLine({x: 430, y: 278}, {x: 430, y: 376}, color, ctx);
+        this.drawBezierCurve({x: 350, y: 430}, {x: 350, y: 475}, {x: 410, y: 475}, {x: 410, y: 430}, color, ctx);
+        this.drawLine({x: 430, y: 278}, {x: 430, y: 430}, color, ctx);
 
     }
 

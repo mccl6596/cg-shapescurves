@@ -83,25 +83,13 @@ class Renderer {
 
     // ctx:          canvas context
     drawSlide3(ctx) {
-        let color = [0,0,0,255];
+        let color = [30,122,228,255];
         //m
-        let m3 = {x:50, y:280};
-        let m4 = {x:50, y:300};
-        let m5 = {x:90, y:280};
-        let m6 = {x:90, y:300};
-        let mp1 = {x:10, y:300};
-        let mp2 = {x:10, y:400};
-        let mp3 = {x:50, y:400};
-        let mp4 = {x:50, y:300};
-        let mp5 = {x:50, y:300};
-        let mp6 = {x:50, y:400};
-        let mp7 = {x:90, y:400};
-        let mp8 = {x:90, y:300};
         this.drawLine({x:10, y:280}, {x:10, y:380}, color, ctx);
-        this.drawLine(m3, m4, color, ctx);
-        this.drawLine(m5, m6, color, ctx);
-        this.drawBezierCurve(mp1, mp2, mp3, mp4, color, ctx);
-        this.drawBezierCurve(mp5, mp6, mp7, mp8, color, ctx);
+        this.drawLine({x:50, y:280}, {x:50, y:300}, color, ctx);
+        this.drawLine({x:90, y:280}, {x:90, y:300}, color, ctx);
+        this.drawBezierCurve({x:10, y:300}, {x:10, y:400}, {x:50, y:400} , {x:50, y:300}, color, ctx);
+        this.drawBezierCurve({x:50, y:300}, {x:50, y:400}, {x:90, y:400}, {x:90, y:300}, color, ctx);
         //a
         this.drawLine({x: 190, y: 280}, {x: 190, y: 370}, color, ctx);
         this.drawCircle({x:145, y: 325}, 45, color, ctx);
@@ -120,9 +108,19 @@ class Renderer {
         this.drawLine({x: 350, y: 340}, {x: 410, y: 340}, color, ctx);
         //n
         this.drawLine({x: 430, y: 278}, {x: 430, y: 376}, color, ctx);
-        this.drawBezierCurve({x: 350, y: 430}, {x: 350, y: 475}, {x: 410, y: 475}, {x: 410, y: 430}, color, ctx);
-        this.drawLine({x: 430, y: 278}, {x: 430, y: 430}, color, ctx);
-
+        this.drawBezierCurve({x: 430, y: 340}, {x: 430, y: 385}, {x: 490, y: 385}, {x: 490, y: 340}, color, ctx);
+        this.drawLine({x: 490, y: 278}, {x: 490, y: 340}, color, ctx);
+        //z
+        this.drawLine({x: 510, y: 370}, {x: 570, y: 370}, color, ctx);
+        this.drawLine({x: 510, y: 279}, {x: 570, y: 370}, color, ctx);
+        this.drawLine({x: 510, y: 279}, {x: 570, y: 279}, color, ctx);
+        //i
+        this.drawLine({x: 590, y: 277}, {x: 590, y: 370}, color, ctx);
+        //e
+        this.drawLine({x: 610, y: 310}, {x: 610, y: 340}, color, ctx);
+        this.drawBezierCurve({x: 610, y: 340}, {x: 610, y: 385}, {x: 670, y: 385}, {x: 670, y: 340}, color, ctx);
+        this.drawBezierCurve({x: 610, y: 310}, {x: 610, y: 265}, {x: 670, y: 265}, {x: 670, y: 310}, color, ctx);
+        this.drawLine({x: 610, y: 340}, {x: 670, y: 340}, color, ctx);
     }
 
     // left_bottom:  object ({x: __, y: __})

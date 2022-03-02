@@ -185,6 +185,8 @@ class Renderer {
         let starting = {x: pt0.x, y: pt0.y};
         if (this.show_points == 1) {
             this.drawPoint(starting, ctx);
+            this.drawPoint(pt1, ctx);
+            this.drawPoint(pt2, ctx);
         }
         let placeHolder;
         for(let i = 0; i < this.num_curve_sections; i++) {

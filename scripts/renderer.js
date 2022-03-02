@@ -59,6 +59,9 @@ class Renderer {
         let x1 = this.randomx();
         let y2 = this.randomy();
         let x2 = this.randomx();
+        while (x2 <= x1) {
+            x2 = this.randomx();
+        }
         let left_bottom = {x: x1, y: y1};
         let right_top = {x: x2, y: y2};
         this.drawRectangle(left_bottom, right_top, [153,153,255,255], ctx);
@@ -85,42 +88,43 @@ class Renderer {
     drawSlide3(ctx) {
         let color = [30,122,228,255];
         //m
-        this.drawLine({x:10, y:280}, {x:10, y:380}, color, ctx);
-        this.drawLine({x:50, y:280}, {x:50, y:300}, color, ctx);
-        this.drawLine({x:90, y:280}, {x:90, y:300}, color, ctx);
+        this.drawLine({x:10, y:280}, {x:10, y:380}, color, ctx, true);
+        this.drawLine({x:50, y:280}, {x:50, y:300}, color, ctx, true);
+        this.drawLine({x:90, y:280}, {x:90, y:300}, color, ctx, true);
         this.drawBezierCurve({x:10, y:300}, {x:10, y:400}, {x:50, y:400} , {x:50, y:300}, color, ctx);
         this.drawBezierCurve({x:50, y:300}, {x:50, y:400}, {x:90, y:400}, {x:90, y:300}, color, ctx);
         //a
-        this.drawLine({x: 190, y: 280}, {x: 190, y: 370}, color, ctx);
+        this.drawLine({x: 190, y: 280}, {x: 190, y: 370}, color, ctx, true);
         this.drawCircle({x:145, y: 325}, 45, color, ctx);
         //c
-        this.drawLine({x: 210, y: 310}, {x: 210, y: 340}, color, ctx);
+        this.drawLine({x: 210, y: 310}, {x: 210, y: 340}, color, ctx, false);
         this.drawBezierCurve({x: 210, y: 340}, {x: 210, y: 385}, {x: 270, y: 385}, {x: 270, y: 340}, color, ctx);
         this.drawBezierCurve({x: 210, y: 310}, {x: 210, y: 265}, {x: 270, y: 265}, {x: 270, y: 310}, color, ctx);
         //k
-        this.drawLine({x: 290, y: 280}, {x: 290, y: 390}, color, ctx);
-        this.drawLine({x: 290, y: 340}, {x: 330, y: 380}, color, ctx);
-        this.drawLine({x: 305, y: 355}, {x: 330, y: 280}, color, ctx);
+        this.drawLine({x: 290, y: 280}, {x: 290, y: 390}, color, ctx, true);
+        this.drawLine({x: 290, y: 340}, {x: 330, y: 380}, color, ctx, true);
+        this.drawLine({x: 305, y: 355}, {x: 330, y: 280}, color, ctx, true);
         //e
         this.drawLine({x: 350, y: 310}, {x: 350, y: 340}, color, ctx);
         this.drawBezierCurve({x: 350, y: 340}, {x: 350, y: 385}, {x: 410, y: 385}, {x: 410, y: 340}, color, ctx);
         this.drawBezierCurve({x: 350, y: 310}, {x: 350, y: 265}, {x: 410, y: 265}, {x: 410, y: 310}, color, ctx);
         this.drawLine({x: 350, y: 340}, {x: 410, y: 340}, color, ctx);
+
         //n
-        this.drawLine({x: 430, y: 278}, {x: 430, y: 376}, color, ctx);
+        this.drawLine({x: 430, y: 278}, {x: 430, y: 376}, color, ctx, true);
         this.drawBezierCurve({x: 430, y: 340}, {x: 430, y: 385}, {x: 490, y: 385}, {x: 490, y: 340}, color, ctx);
-        this.drawLine({x: 490, y: 278}, {x: 490, y: 340}, color, ctx);
+        this.drawLine({x: 490, y: 278}, {x: 490, y: 340}, color, ctx, true );
         //z
-        this.drawLine({x: 510, y: 370}, {x: 570, y: 370}, color, ctx);
-        this.drawLine({x: 510, y: 279}, {x: 570, y: 370}, color, ctx);
-        this.drawLine({x: 510, y: 279}, {x: 570, y: 279}, color, ctx);
+        this.drawLine({x: 510, y: 370}, {x: 570, y: 370}, color, ctx, true);
+        this.drawLine({x: 510, y: 279}, {x: 570, y: 370}, color, ctx, false);
+        this.drawLine({x: 510, y: 279}, {x: 570, y: 279}, color, ctx, true);
         //i
-        this.drawLine({x: 590, y: 277}, {x: 590, y: 370}, color, ctx);
+        this.drawLine({x: 590, y: 277}, {x: 590, y: 370}, color, ctx, true);
         //e
-        this.drawLine({x: 610, y: 310}, {x: 610, y: 340}, color, ctx);
+        this.drawLine({x: 610, y: 310}, {x: 610, y: 340}, color, ctx, false);
         this.drawBezierCurve({x: 610, y: 340}, {x: 610, y: 385}, {x: 670, y: 385}, {x: 670, y: 340}, color, ctx);
         this.drawBezierCurve({x: 610, y: 310}, {x: 610, y: 265}, {x: 670, y: 265}, {x: 670, y: 310}, color, ctx);
-        this.drawLine({x: 610, y: 340}, {x: 670, y: 340}, color, ctx);
+        this.drawLine({x: 610, y: 340}, {x: 670, y: 340}, color, ctx, false);
     }
 
     // left_bottom:  object ({x: __, y: __})
@@ -130,17 +134,10 @@ class Renderer {
     drawRectangle(left_bottom, right_top, color, ctx) {
         let left_top = {x:left_bottom.x, y: right_top.y};
         let right_bottom = {x: right_top.x, y: left_bottom.y};
-        this.drawLine(left_bottom, left_top , color, ctx);
-        this.drawLine(left_top, right_top, color, ctx);
-        this.drawLine(right_bottom, right_top, color, ctx);
-        this.drawLine(left_bottom, right_bottom, color, ctx);
-        if (this.show_points == 1) {
-            this.drawPoint(left_top, ctx);
-            this.drawPoint(left_bottom, ctx);
-            this.drawPoint(right_top, ctx);
-            this.drawPoint(right_bottom, ctx);
-        }
-
+        this.drawLine(left_bottom, left_top , color, ctx, true);
+        this.drawLine(left_top, right_top, color, ctx, true);
+        this.drawLine(right_bottom, right_top, color, ctx, true);
+        this.drawLine(left_bottom, right_bottom, color, ctx, true);
         
     }
 
@@ -158,7 +155,7 @@ class Renderer {
         for(let i = 0; i < this.num_curve_sections; i++) {
             newAngle = newAngle + degrees
             if (degrees > 360) {
-                this.drawLine(starting, a, color, ctx);
+                this.drawLine(starting, a, color, ctx, false);
                 this.drawPoint(starting, ctx);
                 break
             }
@@ -166,7 +163,7 @@ class Renderer {
             if (this.show_points == 1) {
                 this.drawPoint(placeHolder, ctx);
             }
-            this.drawLine(a, placeHolder, color, ctx);
+            this.drawLine(a, placeHolder, color, ctx, false);
             a = placeHolder;
         }
 
@@ -185,13 +182,13 @@ class Renderer {
         let starting = {x: pt0.x, y: pt0.y};
         if (this.show_points == 1) {
             this.drawPoint(starting, ctx);
-            this.drawPoint(pt1, ctx);
-            this.drawPoint(pt2, ctx);
+            this.drawX(pt1, ctx);
+            this.drawX(pt2, ctx);
         }
         let placeHolder;
         for(let i = 0; i < this.num_curve_sections; i++) {
             placeHolder = {x:(Math.pow((1-t), 3)*pt0.x)+(3*Math.pow((1-t), 2)*t*pt1.x)+(3*(1-t)*Math.pow(t, 2)*pt2.x)+(Math.pow(t, 3)*pt3.x), y: (Math.pow((1-t), 3)*pt0.y)+(3*Math.pow((1-t), 2)*t*pt1.y)+(3*(1-t)*Math.pow(t, 2)*pt2.y)+(Math.pow(t, 3)*pt3.y)};
-            this.drawLine(starting, placeHolder, color, ctx);
+            this.drawLine(starting, placeHolder, color, ctx, false);
             if (this.show_points == 1) {
                 this.drawPoint(placeHolder, ctx);
             }
@@ -205,18 +202,31 @@ class Renderer {
         let b = {x: point.x-2, y: point.y+2};
         let c = {x:point.x+2, y: point.y+2};
         let d = {x: point.x+2, y: point.y-2};
-        this.drawLine(a, b, [0, 0, 0, 255], ctx);
-        this.drawLine(b, c, [0, 0, 0, 255], ctx);
-        this.drawLine(c, d, [0, 0, 0, 255], ctx);
-        this.drawLine(d, a, [0, 0, 0, 255], ctx);
+        this.drawLine(a, b, [0, 0, 0, 255], ctx, false);
+        this.drawLine(b, c, [0, 0, 0, 255], ctx, false);
+        this.drawLine(c, d, [0, 0, 0, 255], ctx, false );
+        this.drawLine(d, a, [0, 0, 0, 255], ctx, false);
+    }
+
+    drawX(point, ctx) {
+        let a = {x:point.x-4, y: point.y-4};
+        let b = {x: point.x-4, y: point.y+4};
+        let c = {x:point.x+4, y: point.y+4};
+        let d = {x: point.x+4, y: point.y-4};
+        this.drawLine(a, c, [0, 0, 0, 255], ctx, false);
+        this.drawLine(b, d, [0, 0, 0, 255], ctx, false);
     }
 
     // pt0:          object ({x: __, y: __})
     // pt1:          object ({x: __, y: __})
     // color:        array of int [R, G, B, A]
     // ctx:          canvas context
-    drawLine(pt0, pt1, color, ctx)
+    drawLine(pt0, pt1, color, ctx, name)
     {
+        if (name == true && this.show_points == 1) {
+            this.drawPoint(pt0, ctx);
+            this.drawPoint(pt1, ctx);
+        }
         ctx.strokeStyle = 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + (color[3]/255.0) + ')';
         ctx.beginPath();
         ctx.moveTo(pt0.x, pt0.y);

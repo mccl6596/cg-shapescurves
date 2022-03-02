@@ -58,8 +58,11 @@ class Renderer {
         let y1 = this.randomy();
         let x1 = this.randomx();
         let y2 = this.randomy();
+        while (y2 == y1) {
+            y2 = this.randomx();
+        }
         let x2 = this.randomx();
-        while (x2 <= x1) {
+        while (x2 == x1) {
             x2 = this.randomx();
         }
         let left_bottom = {x: x1, y: y1};
